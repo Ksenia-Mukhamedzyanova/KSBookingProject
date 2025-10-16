@@ -102,6 +102,14 @@ class APIClient():
             assert response.status_code == 200, f"Expected status code 200, but got {response.status_code}"
         return response.json()
 
+    def update_booking(self, booking_id, booking_data):
+        with allure.step('Updating booking'):
+            url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{booking_id}"
+            response = self.session.put(url, json=booking_data, auth=HTTPBasicAuth(Users.USERNAME, Users.PASSWORD))
+        with allure.step('Checking status code'):
+            assert response.status_code == 200, f"Expected status code 200, but got {response.status_code}"
+        return response.json()
+
 
 
 
