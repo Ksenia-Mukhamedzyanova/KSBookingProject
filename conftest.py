@@ -8,7 +8,7 @@ import pytest
 def api_client():
     client = APIClient()
     client.auth()
-    return APIClient()
+    return client
 
 
 @pytest.fixture
