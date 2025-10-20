@@ -47,6 +47,7 @@ def test_ping_not_found(api_client, mocker):
     with pytest.raises(AssertionError, match='Expected status code 201, but got 404'):
         api_client.ping()
 
+
 @allure.feature('Test ping')
 @allure.story('Test connection with different success code')
 def test_ping_success_different_code(api_client, mocker):
@@ -55,6 +56,7 @@ def test_ping_success_different_code(api_client, mocker):
     mocker.patch.object(api_client.session, 'get', return_value=mock_response)
     with pytest.raises(AssertionError, match='Expected status code 201, but got 200'):
         api_client.ping()
+
 
 @allure.feature('Test ping')
 @allure.story('Test timeout')
