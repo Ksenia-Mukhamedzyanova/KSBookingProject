@@ -4,11 +4,8 @@ import allure
 
 @allure.feature('Create Booking')
 @allure.story('Test successful booking creation')
-def test_create_booking(api_client, booking_dates, generate_booking_random_data):
-    booking_data = {
-        **generate_booking_random_data,
-        "bookingdates": booking_dates
-    }
+def test_create_booking(api_client, generate_booking_random_data):
+    booking_data = generate_booking_random_data
 
     with allure.step('Sending request for booking creation'):
         response = api_client.create_booking(booking_data)
@@ -27,11 +24,8 @@ def test_create_booking(api_client, booking_dates, generate_booking_random_data)
 
 @allure.feature('Create Booking')
 @allure.story('Test presence of bookingid in response')
-def test_bookingid_in_response(api_client, booking_dates, generate_booking_random_data):
-    booking_data = {
-        **generate_booking_random_data,
-        "bookingdates": booking_dates
-    }
+def test_bookingid_in_response(api_client, generate_booking_random_data):
+    booking_data = generate_booking_random_data
 
     with allure.step('Sending request for booking creation'):
         response = api_client.create_booking(booking_data)
