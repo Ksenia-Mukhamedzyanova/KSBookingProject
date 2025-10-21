@@ -32,3 +32,6 @@ def test_bookingid_in_response(api_client, generate_booking_random_data):
 
     with allure.step('Verifying bookingid in response'):
         assert "bookingid" in response, "bookingid is missing in response"
+
+    with allure.step('Checking type of bookingid'):
+        assert isinstance(response["bookingid"], int), "bookingid is not an integer"
